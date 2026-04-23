@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALAS - Servicios Integrales y Mantenimiento Habitacional</title>
+    <link rel="icon" type="image/png" href="imagenes/faviconpagina.png">
+    <link rel="shortcut icon" type="image/png" href="imagenes/faviconpagina.png">
+    <link rel="apple-touch-icon" href="imagenes/faviconpagina.png">
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
     <header class="nav" id="nav">
         <div class="nav-inner">
-            <a href="#hero" class="brand">ALAS</a>
+            <a href="#hero" class="brand">
+                <img src="imagenes/logoprincipal.png" alt="Logo ALAS" class="brand-logo">
+                <span class="brand-text">ALAS</span>
+            </a>
             <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
                 <span></span><span></span><span></span>
             </button>
@@ -20,6 +26,7 @@
                 <a href="#gallery">Trabajos</a>
                 <a href="#testimonials">Testimonios</a>
                 <a href="#quote">Presupuesto</a>
+                <a href="#notes">Notas</a>
                 <a href="#contact">Contacto</a>
             </nav>
         </div>
@@ -196,15 +203,8 @@
                     <textarea name="message" rows="4" required placeholder="Describe brevemente el trabajo"></textarea>
                 </label>
 
-                <div class="items-block">
-                    <span class="items-label">Conceptos y costos</span>
-                    <div class="items-list" id="itemsList"></div>
-                    <button type="button" class="btn-link" id="addItem">+ Agregar concepto</button>
-                </div>
-
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Enviar por WhatsApp</button>
-                    <button type="button" id="pdfBtn" class="btn btn-ghost">Generar nota en PDF</button>
                 </div>
             </form>
         </div>
@@ -319,10 +319,43 @@
         </div>
     </section>
 
+    <section class="section notes" id="notes">
+        <div class="notes-hero">
+            <div class="container narrow">
+                <p class="eyebrow">Notas de servicio</p>
+                <h2 class="section-title">Consulta tus notas de servicio</h2>
+                <p class="section-text">Ingresa tu número de cliente y teléfono o clave para ver y descargar tus notas.</p>
+
+                <form class="form notes-form" id="notesForm">
+                    <div class="form-row">
+                        <label>
+                            <span>Número de cliente</span>
+                            <input type="text" name="customer" required placeholder="Ej. 55 0000 0000">
+                        </label>
+                        <label>
+                            <span>Teléfono o clave</span>
+                            <input type="text" name="key" required placeholder="Teléfono o ID de nota">
+                        </label>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="container narrow">
+            <div class="notes-results" id="notesResults" aria-live="polite"></div>
+        </div>
+    </section>
+
     <footer class="footer" id="contact">
         <div class="container footer-grid">
             <div>
-                <div class="brand">ALAS</div>
+                <div class="brand brand-footer">
+                    <img src="imagenes/logoprincipal.png" alt="Logo ALAS" class="brand-logo">
+                    <span class="brand-text">ALAS</span>
+                </div>
                 <p class="footer-tag">Servicios Integrales y Mantenimiento Habitacional</p>
             </div>
             <div>
@@ -352,5 +385,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <script src="main.js"></script>
     <script src="pdf.js"></script>
+    <script src="notes.js"></script>
 </body>
 </html>
