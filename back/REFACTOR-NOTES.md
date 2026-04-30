@@ -81,7 +81,6 @@ back/
 
 ### Sin tocar (intencionalmente)
 
-- `back/server.js` (legacy) — `package.json.main` y los scripts apuntan a `src/server.js`. Como `back/routes/` ya no existe, intentar arrancarlo fallará (módulos no encontrados). Borrarlo es seguro.
 - `front/` — completamente intocable.
 - Esquema de base de datos — sin cambios.
 
@@ -103,12 +102,11 @@ Verificación manual con curl tras la migración completa:
 
 ## TODOs
 
-1. **`back/server.js` legacy** — borrar. Ya no funciona porque `back/routes/` se eliminó. Solo confunde.
-2. **`back/db.js` shim** — borrar. Nada en `src/` lo usa. Solo queda por compatibilidad con scripts externos hipotéticos.
-3. **Notas vinculadas a servicio terminado** — el lookup por id en `obtenerNota` usa `buscarPorId` que NO filtra `activo=1`. Si se soft-deleta, las funciones que aún esperan ese ID por path ya no encuentran. Actualmente no es bug (frontend solo llama estos endpoints sobre items que vio en la lista, y la lista filtra activos). Anotado.
-4. **Logs de seguridad** — el middleware de errores loggea stack en server pero no expone al cliente. OK para producción. Considerar `winston`/`pino` cuando crezca.
-5. **Tests** — carpeta `tests/` aún no creada. La estructura permite añadir Jest/Vitest fácilmente sobre `service`/`repository` sin tocar Express.
-6. **Limpieza de historial git** — el repo es público y los `.env` antiguos quedaron commiteados antes del fix del `.gitignore`. Pendiente: BFG o `git filter-repo` + rotación de credenciales (DB pwd, SESSION_SECRET, GOOGLE_MAPS_API_KEY).
+1. **`back/db.js` shim** — borrar. Nada en `src/` lo usa. Solo queda por compatibilidad con scripts externos hipotéticos.
+2. **Notas vinculadas a servicio terminado** — el lookup por id en `obtenerNota` usa `buscarPorId` que NO filtra `activo=1`. Si se soft-deleta, las funciones que aún esperan ese ID por path ya no encuentran. Actualmente no es bug (frontend solo llama estos endpoints sobre items que vio en la lista, y la lista filtra activos). Anotado.
+3. **Logs de seguridad** — el middleware de errores loggea stack en server pero no expone al cliente. OK para producción. Considerar `winston`/`pino` cuando crezca.
+4. **Tests** — carpeta `tests/` aún no creada. La estructura permite añadir Jest/Vitest fácilmente sobre `service`/`repository` sin tocar Express.
+5. **Limpieza de historial git** — el repo es público y los `.env` antiguos quedaron commiteados antes del fix del `.gitignore`. Pendiente: BFG o `git filter-repo` + rotación de credenciales (DB pwd, SESSION_SECRET, GOOGLE_MAPS_API_KEY).
 
 ## Mejoras cosméticas pendientes (no bloqueantes)
 
